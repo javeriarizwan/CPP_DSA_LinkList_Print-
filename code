@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+class node{
+    public:
+    int value;
+    node *next;
+};
+class linklist{
+    public:
+    node *head;
+    node *tail;
+    public:
+    linklist(){
+        head = NULL;
+        tail = NULL;
+    }
+    void addNode(int v){
+        node *ptr = new node;
+        ptr -> value = v;
+        ptr -> next = NULL;
+        if(head == NULL){
+            head = ptr;
+            tail = ptr;
+            ptr = NULL;
+        }
+        else{
+            tail -> next = ptr;
+            tail = ptr;
+            ptr = NULL;
+            delete ptr;
+        }
+    }   
+    void print(){
+    for (node * i= head ; i!= tail ;){
+        cout<< i -> value<<"\t";
+        i = i->next;
+    }
+    cout<< tail ->value<<"\t";
+}
+};
+
+int main(){
+    linklist a;
+    a.addNode(6);
+    a.addNode(7);
+    a.addNode(9);
+    a.print();
+    return 0;
+}
